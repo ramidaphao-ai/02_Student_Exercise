@@ -1,20 +1,14 @@
+"""Static Polygon Art."""
 
-"""Drawing a Cat Face."""
-import turtle
-
-screen = turtle.Screen()
-screen.title("Drawing a Cat Face")
-screen.bgcolor("white")
-
-
-"""Example 2: Repetition and methods of a Turtle object."""
 import turtle
 from polygon_shape import Polygon
 
 screen = turtle.Screen()
-screen.title("Example 2 - Drawing a Square")
+screen.title("Static Polygon Art")
+screen.bgcolor("white")
 
 artist = Polygon("khaki", -200, 100, 5, 100)
+
 artist2 = turtle.Turtle()
 artist2.shape("turtle")
 artist2.pencolor("olive")
@@ -117,7 +111,6 @@ artist_cat.goto(100, -45)
 artist_cat.hideturtle()
 
 artist9 = Polygon("#b2996e", 280, -250, 7, 100)
-
 artist10 = Polygon("#CAB0B8", 0, 250, 5, 100)
 
 artist11 = turtle.Turtle()
