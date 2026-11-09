@@ -1,24 +1,20 @@
-# Object-Oriented Polygon Art
+# Student Polygon Art
 
-A Python project that uses Turtle graphics to create static and animated artwork.
+Python Turtle Graphics exercise: a static collage and an animation built with an object-oriented `Polygon` class.
 
-## Project Files
+## Files
 
-- polygon_shape.py: Contains the Polygon class.
-- 05_polygon_art_starter.py: Creates the static artwork.
-- 06_animated_polygon_art_starter.py: Creates the animated artwork.
-- static_artwork.png: Image of the static artwork.
-- animated_artwork.mp4: Video of the animated artwork.
-- .gitignore: Specifies files that Git should ignore.
+- `polygon_shape.py`: reusable regular Polygon class with validated state and a private-by-convention Turtle pen.
+- `05_polygon_art_starter.py`: static collage containing 20 Polygon objects.
+- `06_animated_polygon_art_starter.py`: animation that reuses those 20 objects for 90 frames.
 
-## Requirements
+## Run
 
-- Python 3
-- Turtle graphics
-- Tkinter
+Use Python 3 on a computer with a graphical desktop and Tkinter:
 
-## How to Run
+```bash
+python3 05_polygon_art_starter.py
+python3 06_animated_polygon_art_starter.py
+```
 
-Run the static artwork: python3 05_polygon_art_starter.py
-
-Run the animated artwork: python3 06_animated_polygon_art_starter.py
+The animation uses `screen.tracer(0)`, `Polygon.move_to()`, and `screen.update()`. Each Polygon owns its own Turtle, so clearing and moving one object does not erase another.

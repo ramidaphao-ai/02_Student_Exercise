@@ -1,148 +1,23 @@
-"""Static Polygon Art."""
-
+"""Static polygon collage with 20 independently managed Polygon objects."""
 import turtle
 from polygon_shape import Polygon
 
 screen = turtle.Screen()
-screen.title("Static Polygon Art")
-screen.bgcolor("white")
+screen.title("Student Polygon Art")
+screen.setup(width=1400, height=1040)
+screen.bgcolor("black")
+screen.tracer(0)
 
-artist = Polygon("khaki", -200, 100, 5, 100)
+# x, y, sides, side_length, color, pen_size, angle
+POLYGON_DATA = [[-392,272,6,66,"#35e6df",3,18],[-212,350,5,62,"#9bd32d",8,0],[38,280,3,112,"#dda0dd",10,12],[-70,110,5,90,"#dda0dd",9,8],[242,30,6,118,"#ffb6c8",7,0],[296,74,6,88,"#ff796e",3,12],[-578,55,4,88,"#ffb6c8",3,45],[-401,-66,4,72,"#9bd32d",10,8],[-249,-78,5,82,"#00e5ed",8,18],[-283,-204,3,94,"#36d6c8",8,12],[-145,-156,3,60,"#ff796e",5,20],[-71,-181,5,67,"#00e5ed",8,0],[134,-57,3,85,"#9bd32d",4,20],[99,19,4,31,"#00e5ed",7,12],[242,-301,3,82,"#ffe000",5,15],[240,-218,3,78,"#ffffff",8,0],[276,-227,3,42,"#36d6c8",5,10],[377,-193,4,42,"#ffe000",10,10],[397,-232,6,104,"#ffae00",6,18],[330,-280,3,90,"#ffe000",4,40]]
 
-artist2 = turtle.Turtle()
-artist2.shape("turtle")
-artist2.pencolor("olive")
-artist2.pensize(100)
-artist2.penup()
-artist2.goto(60, 80)
-artist2.pendown()
+polygons = [
+    Polygon(x, y, sides, side_length, color, pen_size, angle)
+    for x, y, sides, side_length, color, pen_size, angle in POLYGON_DATA
+]
 
-artist3 = Polygon("tan", 50, -280, 8, 100)
-artist4 = Polygon("cornsilk", -200, -280, 6, 100)
-artist5 = Polygon("#8c564b", -100, -100, 4, 100)
-artist6 = Polygon("#c49391", 200, 100, 7, 100)
-artist7 = Polygon("#7D683C", -300, 0, 3, 100)
+for polygon in polygons:
+    polygon.draw()
 
-artist8 = turtle.Turtle()
-artist8.shape("turtle")
-artist8.pencolor("#C9DBC1")
-artist8.pensize(100)
-artist8.penup()
-artist8.goto(280, 0)
-artist8.pendown()
-
-artist_cat = turtle.Turtle()
-artist_cat.shape("turtle")
-artist_cat.pencolor("#3A2311")
-artist_cat.pensize(5)
-artist_cat.speed(0)
-artist_cat.penup()
-artist_cat.goto(0, -100)
-artist_cat.pendown()
-artist_cat.fillcolor("#FFF0C9")
-artist_cat.begin_fill()
-artist_cat.circle(120)
-artist_cat.end_fill()
-
-artist_cat.penup()
-artist_cat.goto(-100, 80)
-artist_cat.pendown()
-artist_cat.fillcolor("#FFF0C9")
-artist_cat.begin_fill()
-artist_cat.goto(-130, 180)
-artist_cat.goto(-30, 130)
-artist_cat.goto(-100, 80)
-artist_cat.end_fill()
-
-artist_cat.penup()
-artist_cat.goto(100, 80)
-artist_cat.pendown()
-artist_cat.begin_fill()
-artist_cat.goto(130, 180)
-artist_cat.goto(30, 130)
-artist_cat.goto(100, 80)
-artist_cat.end_fill()
-
-artist_cat.penup()
-artist_cat.goto(-45, 30)
-artist_cat.pendown()
-artist_cat.dot(15, "#795548")
-
-artist_cat.penup()
-artist_cat.goto(45, 30)
-artist_cat.pendown()
-artist_cat.dot(15, "#795548")
-
-artist_cat.penup()
-artist_cat.goto(0, -5)
-artist_cat.pendown()
-artist_cat.dot(15, "#F28BA8")
-
-artist_cat.penup()
-artist_cat.goto(0, -15)
-artist_cat.pendown()
-artist_cat.goto(0, -35)
-artist_cat.goto(-20, -50)
-
-artist_cat.penup()
-artist_cat.goto(0, -35)
-artist_cat.pendown()
-artist_cat.goto(20, -50)
-
-artist_cat.penup()
-artist_cat.goto(-35, -20)
-artist_cat.pendown()
-artist_cat.goto(-100, -10)
-
-artist_cat.penup()
-artist_cat.goto(-35, -35)
-artist_cat.pendown()
-artist_cat.goto(-100, -45)
-
-artist_cat.penup()
-artist_cat.goto(35, -20)
-artist_cat.pendown()
-artist_cat.goto(100, -10)
-
-artist_cat.penup()
-artist_cat.goto(35, -35)
-artist_cat.pendown()
-artist_cat.goto(100, -45)
-artist_cat.hideturtle()
-
-artist9 = Polygon("#b2996e", 280, -250, 7, 100)
-artist10 = Polygon("#CAB0B8", 0, 250, 5, 100)
-
-artist11 = turtle.Turtle()
-artist11.shape("turtle")
-artist11.pencolor("#BDB76B")
-artist11.pensize(100)
-artist11.penup()
-artist11.goto(265, 190)
-artist11.pendown()
-
-artist12 = Polygon("#FFF5EE", -265, 190, 6, 100)
-
-artist13 = turtle.Turtle()
-artist13.shape("turtle")
-artist13.pencolor("#A9A9A9")
-artist13.pensize(100)
-artist13.penup()
-artist13.goto(-300, -300)
-artist13.pendown()
-
-artist.draw()
-artist2.circle(50)
-artist3.draw()
-artist4.draw()
-artist5.draw()
-artist6.draw()
-artist7.draw()
-artist8.circle(50)
-artist9.draw()
-artist10.draw()
-artist11.circle(25)
-artist12.draw()
-artist13.circle(120)
-
+screen.update()
 screen.mainloop()
