@@ -1,162 +1,38 @@
-import turtle
+"""Animate the same 20 Polygon objects for 90 frames."""
 import math
 import time
+import turtle
 from polygon_shape import Polygon
 
 screen = turtle.Screen()
-screen.title("Animated Polygon Art")
+screen.title("Animated Student Polygon Art")
+screen.setup(width=1400, height=1040)
+screen.bgcolor("black")
 screen.tracer(0)
 
-polygon_data = [
-    ("khaki", -200, 100, 5, 100),
-    ("tan", 50, -280, 8, 100),
-    ("cornsilk", -200, -280, 6, 100),
-    ("#8c564b", -100, -100, 4, 100),
-    ("#c49391", 200, 100, 7, 100),
-    ("#7D683C", -300, 0, 3, 100),
-    ("#b2996e", 280, -250, 7, 100),
-    ("#CAB0B8", 0, 250, 5, 100),
-    ("#FFF5EE", -265, 190, 6, 100)
+# x, y, sides, side_length, color, pen_size, angle
+POLYGON_DATA = [[-392,272,6,66,"#35e6df",3,18],[-212,350,5,62,"#9bd32d",8,0],[38,280,3,112,"#dda0dd",10,12],[-70,110,5,90,"#dda0dd",9,8],[242,30,6,118,"#ffb6c8",7,0],[296,74,6,88,"#ff796e",3,12],[-578,55,4,88,"#ffb6c8",3,45],[-401,-66,4,72,"#9bd32d",10,8],[-249,-78,5,82,"#00e5ed",8,18],[-283,-204,3,94,"#36d6c8",8,12],[-145,-156,3,60,"#ff796e",5,20],[-71,-181,5,67,"#00e5ed",8,0],[134,-57,3,85,"#9bd32d",4,20],[99,19,4,31,"#00e5ed",7,12],[242,-301,3,82,"#ffe000",5,15],[240,-218,3,78,"#ffffff",8,0],[276,-227,3,42,"#36d6c8",5,10],[377,-193,4,42,"#ffe000",10,10],[397,-232,6,104,"#ffae00",6,18],[330,-280,3,90,"#ffe000",4,40]]
+
+polygons = [
+    Polygon(x, y, sides, side_length, color, pen_size, angle)
+    for x, y, sides, side_length, color, pen_size, angle in POLYGON_DATA
 ]
 
-polygons = []
+for polygon in polygons:
+    polygon.draw()
+screen.update()
 
-for color, x, y, sides, length in polygon_data:
-    polygon = Polygon(color, x, y, sides, length)
-    polygon.speed(0)
-    polygons.append(polygon)
-
-circle_data = [
-    ("olive", 60, 80, 50),
-    ("#C9DBC1", 280, 0, 50),
-    ("#BDB76B", 265, 190, 25),
-    ("#A9A9A9", -300, -300, 120)
-]
-
-circles = []
-
-for color, x, y, radius in circle_data:
-    circle = turtle.Turtle()
-    circle.shape("turtle")
-    circle.pencolor(color)
-    circle.pensize(100)
-    circle.speed(0)
-    circle.penup()
-    circle.goto(x, y)
-    circle.pendown()
-    circles.append((circle, x, y, radius))
-
-artist_cat = turtle.Turtle()
-artist_cat.shape("turtle")
-artist_cat.pencolor("#3A2311")
-artist_cat.pensize(5)
-artist_cat.speed(0)
-artist_cat.hideturtle()
-
-
-def draw_cat(x, y):
-    artist_cat.clear()
-
-    artist_cat.penup()
-    artist_cat.goto(x, y - 100)
-    artist_cat.pendown()
-    artist_cat.fillcolor("#FFF0C9")
-    artist_cat.begin_fill()
-    artist_cat.circle(120)
-    artist_cat.end_fill()
-
-    artist_cat.penup()
-    artist_cat.goto(x - 100, y + 80)
-    artist_cat.pendown()
-    artist_cat.begin_fill()
-    artist_cat.goto(x - 130, y + 180)
-    artist_cat.goto(x - 30, y + 130)
-    artist_cat.goto(x - 100, y + 80)
-    artist_cat.end_fill()
-
-    artist_cat.penup()
-    artist_cat.goto(x + 100, y + 80)
-    artist_cat.pendown()
-    artist_cat.begin_fill()
-    artist_cat.goto(x + 130, y + 180)
-    artist_cat.goto(x + 30, y + 130)
-    artist_cat.goto(x + 100, y + 80)
-    artist_cat.end_fill()
-
-    artist_cat.penup()
-    artist_cat.goto(x - 45, y + 30)
-    artist_cat.pendown()
-    artist_cat.dot(15, "#795548")
-
-    artist_cat.penup()
-    artist_cat.goto(x + 45, y + 30)
-    artist_cat.pendown()
-    artist_cat.dot(15, "#795548")
-
-    artist_cat.penup()
-    artist_cat.goto(x, y - 5)
-    artist_cat.pendown()
-    artist_cat.dot(15, "#F28BA8")
-
-    artist_cat.penup()
-    artist_cat.goto(x, y - 15)
-    artist_cat.pendown()
-    artist_cat.goto(x, y - 35)
-    artist_cat.goto(x - 20, y - 50)
-
-    artist_cat.penup()
-    artist_cat.goto(x, y - 35)
-    artist_cat.pendown()
-    artist_cat.goto(x + 20, y - 50)
-
-    artist_cat.penup()
-    artist_cat.goto(x - 35, y - 20)
-    artist_cat.pendown()
-    artist_cat.goto(x - 100, y - 10)
-
-    artist_cat.penup()
-    artist_cat.goto(x - 35, y - 35)
-    artist_cat.pendown()
-    artist_cat.goto(x - 100, y - 45)
-
-    artist_cat.penup()
-    artist_cat.goto(x + 35, y - 20)
-    artist_cat.pendown()
-    artist_cat.goto(x + 100, y - 10)
-
-    artist_cat.penup()
-    artist_cat.goto(x + 35, y - 35)
-    artist_cat.pendown()
-    artist_cat.goto(x + 100, y - 45)
-
-    artist_cat.hideturtle()
-
-
-frame = 0
-
-while True:
-    x = 25 * math.sin(frame / 15)
-    y = 20 * math.cos(frame / 15)
-
-    for polygon, data in zip(polygons, polygon_data):
-        color, start_x, start_y, sides, length = data
-        polygon.clear()
-        polygon.penup()
-        polygon.goto(start_x + x, start_y + y)
-        polygon.pendown()
-        polygon.draw()
-
-    for circle, start_x, start_y, radius in circles:
-        circle.clear()
-        circle.penup()
-        circle.goto(start_x + x, start_y + y)
-        circle.pendown()
-        circle.circle(radius)
-
-    draw_cat(x, y)
-
+for frame in range(90):
+    dx = 18 * math.sin(frame / 14)
+    dy = 14 * math.cos(frame / 14)
+    for index, (polygon, item) in enumerate(zip(polygons, POLYGON_DATA)):
+        x, y, sides, side_length, color, pen_size, angle = item
+        phase = index * 0.35
+        polygon.move_to(
+            x + dx * math.cos(phase),
+            y + dy * math.sin(phase),
+        )
     screen.update()
     time.sleep(0.03)
-    frame += 1
 
 screen.mainloop()
